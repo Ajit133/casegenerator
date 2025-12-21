@@ -7,7 +7,7 @@ use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\RichEditor;
+use App\Filament\Components\RichEditor;
 use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
@@ -44,7 +44,9 @@ class PostResource extends Resource
 
             RichEditor::make('body')
                 ->required()
-                ->columnSpanFull(),
+                ->columnSpanFull()
+                ->fileAttachmentsDirectory('posts/content')
+                ->fileAttachmentsVisibility('public'),
 
             FileUpload::make('featured_image')
                 ->label('Featured Image')
@@ -74,6 +76,18 @@ class PostResource extends Resource
                 ->directory('posts/gallery')
                 ->visibility('public')
                 ->maxFiles(10)
+                ->reorderable()
+                ->columnSpanFull(),
+
+            FileUpload::make('content_images')
+                ->label('Content Images')
+                ->helperText('These images can be inserted into your content using the rich editor.')
+                ->image()
+                ->disk('public')
+                ->multiple()
+                ->directory('posts/content')
+                ->visibility('public')
+                ->maxFiles(20)
                 ->reorderable()
                 ->columnSpanFull(),
         ]);
@@ -106,6 +120,18 @@ class PostResource extends Resource
                     )
                     ->color(fn (Post $record) =>
                         $record->gallery_images ? 'success' : 'gray'
+                    ),
+
+                TextColumn::make('content_images')
+                    ->label('Content')
+                    ->badge()
+                    ->getStateUsing(fn (Post $record) =>
+                        is_array($record->content_images) && count($record->content_images) > 0
+                            ? count($record->content_images) . ' content images'
+                            : 'No content images'
+                    )
+                    ->color(fn (Post $record) =>
+                        (is_array($record->content_images) && count($record->content_images) > 0) ? 'info' : 'gray'
                     ),
 
                 TextColumn::make('created_at')

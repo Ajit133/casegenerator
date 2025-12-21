@@ -235,6 +235,34 @@
             border-radius: 0;
         }
 
+        /* Images within content */
+        .post-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .post-body img:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .post-body figure {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .post-body figcaption {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
         /* Gallery section */
         .gallery-section {
             margin-top: 3rem;
@@ -554,7 +582,7 @@
 
                 {{-- Post Body --}}
                 <div class="post-body">
-                    {!! $post->body !!}
+                    {!! $post->formatted_body !!}
                 </div>
 
                 {{-- Gallery Images --}}
@@ -837,7 +865,7 @@
                             @if($post->featured_image)
                                 <div class="related-post-image">
                                     <a href="{{ route('post.show', $post->slug) }}">
-                                        <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}">
+                                        <img src="{{ Storage::url($post->featured_image) }}" alt="{{ $post->image_alt_text ?? $post->title }}">
                                     </a>
                                 </div>
                             @endif
@@ -884,6 +912,17 @@
             modal.classList.remove('active');
             document.body.style.overflow = '';
         }
+
+        // Make content images clickable for modal viewing
+        document.addEventListener('DOMContentLoaded', function() {
+            const contentImages = document.querySelectorAll('.post-body img');
+            contentImages.forEach(function(img) {
+                img.addEventListener('click', function() {
+                    openImageModal(this.src);
+                });
+                img.style.cursor = 'pointer';
+            });
+        });
 
         // Close modal when pressing ESC
         document.addEventListener('keydown', function(e) {

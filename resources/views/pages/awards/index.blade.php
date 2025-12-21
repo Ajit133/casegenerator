@@ -17,9 +17,9 @@
     
     @include('pages.awards.sections.certifications')
     
-    @include('pages.awards.sections.accreditations')
+    {{-- @include('pages.awards.sections.accreditations') --}}
     
-    @include('landing.sections.newsletter')
+    {{-- @include('landing.sections.newsletter') --}}
     
     @include('landing.sections.footer')
     

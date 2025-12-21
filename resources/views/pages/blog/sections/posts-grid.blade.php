@@ -1,3 +1,6 @@
+@php
+    use Illuminate\Support\Facades\Storage;
+@endphp
 <section class="blog-listing-section">
     <style>
         /* Overall Section */
@@ -170,7 +173,7 @@
                         @if($post->featured_image)
                             <div class="blog-listing-image">
                                 <a href="{{ route('post.show', $post->slug) }}">
-                                    <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}">
+                                    <img src="{{ Storage::url($post->featured_image) }}" alt="{{ $post->image_alt_text ?? $post->title }}">
                                 </a>
                             </div>
                         @endif
@@ -184,7 +187,7 @@
                             <h2 class="blog-listing-title">
                                 <a href="{{ route('post.show', $post->slug) }}">{{ $post->title }}</a>
                             </h2>
-                            <p class="blog-listing-excerpt">{{ Str::limit(strip_tags($post->content), 150) }}</p>
+                            <p class="blog-listing-excerpt">{{ Str::limit(strip_tags($post->body), 150) }}</p>
                             <a href="{{ route('post.show', $post->slug) }}" class="blog-read-more">Read More</a>
                         </div>
                     </article>

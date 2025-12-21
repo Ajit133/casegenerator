@@ -1,0 +1,47 @@
+FREEPIK IMAGES SETUP FOR HERO CAROUSEL
+
+🎯 RECOMMENDED FREEPIK SEARCH TERMS:
+1. "industrial generator"
+2. "diesel generator factory"
+3. "backup power generator"
+4. "industrial equipment power"
+5. "generator manufacturing"
+
+📋 IMAGE SPECIFICATIONS:
+- Format: JPG or WebP
+- Size: 1920x1080px (Full HD) minimum
+- Orientation: Landscape
+- Quality: High resolution
+
+🔍 FREEPIK DOWNLOAD STEPS:
+1. Go to freepik.com
+2. Search: "industrial generator" or "diesel generator"
+3. Filter: Photos, Landscape orientation
+4. Look for images showing:
+   - Large industrial generators
+   - Generator manufacturing facilities
+   - Backup power equipment
+   - Industrial power solutions
+
+💾 SAVE AS:
+- hero-generator-1.jpg (Main industrial generator)
+- hero-generator-2.jpg (Generator facility/manufacturing)
+- hero-generator-3.jpg (Backup power/outdoor generator)
+
+📁 LOCATION: public/images/landing/
+
+✅ SLIDER FEATURES INCLUDED:
+- Auto-rotation every 5 seconds
+- Navigation arrows (left/right)
+- Slide indicators (dots)
+- Hover to pause
+- Smooth transitions
+- Responsive design
+- Orange accent color (#FF7A00)
+
+🎨 RECOMMENDED IMAGE STYLES:
+- Professional industrial photography
+- Well-lit environments
+- Clear equipment visibility
+- Professional/corporate feel
+- Avoid cluttered backgrounds

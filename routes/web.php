@@ -35,7 +35,11 @@ Route::get('/welcome', function () {
 // single post show 
 Route::get('/post/{slug}', function ($slug) {
     $post = Post::where('slug', $slug)->firstOrFail();
-    return view('post-single', compact('post'));
+    // Get 3 random blog posts
+    $randomPosts = Post::inRandomOrder()
+        ->limit(3)
+        ->get();
+    return view('pages.blog.sections.post-single', compact('post', 'randomPosts'));
 })->name('post.show');
 
 // Newsletter subscription

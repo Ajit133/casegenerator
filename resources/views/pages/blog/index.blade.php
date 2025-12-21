@@ -14,7 +14,7 @@
     @include('pages.blog.sections.hero')
     
     @include('pages.blog.sections.posts-grid', ['posts' => $posts])
-    
+
     {{-- @include('landing.sections.newsletter') --}}
     
     @include('landing.sections.footer')

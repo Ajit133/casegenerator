@@ -685,12 +685,12 @@
     background: var(--white);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); */
     transition: transform 0.3s;
 }
 
 .blog-listing-card:hover {
-    transform: translateY(-10px);
+    /* transform: translateY(-10px); */
 }
 
 .blog-listing-image {
@@ -707,7 +707,7 @@
 }
 
 .blog-listing-card:hover .blog-listing-image img {
-    transform: scale(1.05);
+    /* transform: scale(1.05); */
 }
 
 .blog-listing-content {

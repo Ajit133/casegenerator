@@ -2,7 +2,7 @@
 
 /* Page Hero */
 .page-hero {
-    background: linear-gradient(135deg, #CC3366 0%, #CC3366 100%);
+    background: linear-gradient(135deg, #7A1E3A 0%, #AC2A54 50%, #7A1E3A 100%);
     color: var(--white);
     padding: 120px 0 100px;
     position: relative;

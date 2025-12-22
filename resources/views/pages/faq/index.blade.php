@@ -17,8 +17,6 @@
     
     @include('pages.faq.sections.contact-support')
     
-    @include('landing.sections.newsletter')
-    
     @include('landing.sections.footer')
     
     <script src="{{ asset('js/landing.js') }}"></script>

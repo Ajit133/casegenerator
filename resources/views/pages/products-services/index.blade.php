@@ -22,7 +22,7 @@
     
     @include('pages.products-services.sections.cta')
     
-    @include('landing.sections.newsletter')
+    {{-- @include('landing.sections.newsletter') --}}
     
     @include('landing.sections.footer')
     

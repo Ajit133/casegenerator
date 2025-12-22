@@ -24,7 +24,6 @@
     
     @include('pages.about.sections.why-choose-us')
     
-    @include('landing.sections.newsletter')
     
     @include('landing.sections.footer')
     

@@ -1,11 +1,13 @@
-<section class="page-hero">
-    <div class="hero-background">
-        <div class="container">
-            <div class="breadcrumb">
-                <a href="{{ route('home') }}">Home</a> / <span>Products & Services</span>
-            </div>
+<section class="page-hero min-h-screen flex items-center justify-center">
+    <div class="hero-background w-full h-full absolute inset-0"></div>
+    <div class="relative container mx-auto px-4">
+        <div class="text-center w-full flex flex-col items-center">
+            
             <h1 class="page-title">Products & Services</h1>
-            <p >Building The Future, Restoring The Past</p>
+            <div class="breadcrumb flex justify-center items-center gap-2">
+                <a href="{{ route('home') }}">Home</a> <span>/</span> <span>Products & Services</span>
+            </div>
+            <p>Building The Future, Restoring The Past</p>
         </div>
     </div>
 </section>

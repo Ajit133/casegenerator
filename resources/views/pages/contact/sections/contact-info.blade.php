@@ -2,7 +2,7 @@
     <div class="container">
         <div class="contact-info-grid">
             <div class="contact-info-card">
-                <div class="contact-info-icon">📍</div>
+                <div class="contact-info-icon"><i class="fa-solid fa-location-dot"></i></div>
                 <h3 class="contact-info-title">Our Location</h3>
                 <p class="contact-info-text">
                     Casablanca Elect. Generators & Equipment Tr. LLC<br>
@@ -12,7 +12,7 @@
             </div>
             
             <div class="contact-info-card">
-                <div class="contact-info-icon">📞</div>
+                <div class="contact-info-icon"><i class="fa-solid fa-phone"></i></div>
                 <h3 class="contact-info-title">Phone & Fax</h3>
                 <p class="contact-info-text">
                     Phone: +971 6 5300388<br>
@@ -22,7 +22,7 @@
             </div>
             
             <div class="contact-info-card">
-                <div class="contact-info-icon">✉️</div>
+                <div class="contact-info-icon"><i class="fa-solid fa-envelope"></i></div>
                 <h3 class="contact-info-title">Email</h3>
                 <p class="contact-info-text">
                     casa@casagenerators.com<br>
@@ -31,7 +31,7 @@
             </div>
             
             <div class="contact-info-card">
-                <div class="contact-info-icon">🕐</div>
+                <div class="contact-info-icon"><i class="fa-solid fa-clock"></i></div>
                 <h3 class="contact-info-title">Business Hours</h3>
                 <p class="contact-info-text">
                     Monday - Saturday: 8:30 AM - 6:00 PM<br>

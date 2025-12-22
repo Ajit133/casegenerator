@@ -22,29 +22,18 @@
                                          alt="{{ $post->title }}" 
                                          class="blog-image"
                                          loading="lazy">
-                                    <span class="application-badge">APPLICATION</span>
                                 </div>
                             @endif
                             
                             <div class="blog-content">
-                                <span class="blog-category">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                                    </svg>
-                                    {{ strtoupper($post->category ?? 'CASE STUDIES') }}
-                                </span>
+                                <div class="blog-meta">
+                                    <span class="blog-date">{{ $post->created_at->format('d M, Y') }}</span>
+                                    <span class="blog-category">{{ strtoupper($post->category ?? 'MARKETING') }}</span>
+                                </div>
 
                                 <h3 class="blog-title">{{ $post->title }}</h3>
-                                <a href="{{ route('post.show', $post->slug) }}" class="btn-see-case">
-                                    Read Blog
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                        <polyline points="12 5 19 12 12 19"></polyline>
-                                    </svg>
-                                </a>
+                                <p class="blog-excerpt">{{ Str::limit($post->content, 150, '...') }}</p>
+                                <a href="{{ route('post.show', $post->slug) }}" class="blog-read-more">Read More →</a>
                             </div>
                         </div>
                     </article>
@@ -58,57 +47,35 @@
                                  alt="Infrastructures case study" 
                                  class="blog-image"
                                  loading="lazy">
-                            <span class="application-badge">APPLICATION</span>
                         </div>
                         <div class="blog-content">
-                            <span class="blog-category">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg>
-                                INFRASTRUCTURES
-                            </span>
-                            <h3 class="blog-title">Dagartech's 650 kVA power guarantees the continuity of a pumping station in Barcelona</h3>
-                            <a href="#" class="btn-see-case">
-                                Read Blog
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
+                            <div class="blog-meta">
+                                <span class="blog-date">21 Dec, 2025</span>
+                                <span class="blog-category">MARKETING</span>
+                            </div>
+                            <h3 class="blog-title">Voluptatem dolor voluptate illo dolor et fugit nostrud aut</h3>
+                            <p class="blog-excerpt">Porro dicta modi ull.sadalfkasdflkjsdsfkasjdfklasdf kasdfjaklsdfaksdafdsdfklasdjfklasjdfklasdjfk asdjfklasdjf klsadjfa...</p>
+                            <a href="#" class="blog-read-more">Read More →</a>
                         </div>
                     </div>
                 </article>
                 
-                <article class="blog-card blog-card-with-button">
+                <article class="blog-card">
                     <div class="blog-card-inner">
                         <div class="blog-image-wrapper">
                             <img src="{{ asset('images/landing/case-study-2.jpg') }}" 
                                  alt="Logistics case study" 
                                  class="blog-image"
                                  loading="lazy">
-                            <span class="application-badge">APPLICATION</span>
                         </div>
                         <div class="blog-content">
-                            <span class="blog-category">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg>
-                                LOGISTICS
-                            </span>
-                            <h3 class="blog-title">Dagartech generating sets ensure the power supply for Leroy Merlin's New Logistics Platform in Portugal</h3>
-                            <a href="#" class="btn-see-case">
-                                Read Blog
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
+                            <div class="blog-meta">
+                                <span class="blog-date">17 Dec, 2025</span>
+                                <span class="blog-category">MARKETING</span>
+                            </div>
+                            <h3 class="blog-title">Error voluptas qui omnis totam ad et impedit quae nemo aut qui quod cillum quibusdam</h3>
+                            <p class="blog-excerpt">Ut labore omnis even.guygiyutguyyu</p>
+                            <a href="#" class="blog-read-more">Read More →</a>
                         </div>
                     </div>
                 </article>
@@ -120,26 +87,15 @@
                                  alt="Industry case study" 
                                  class="blog-image"
                                  loading="lazy">
-                            <span class="application-badge">APPLICATION</span>
                         </div>
                         <div class="blog-content">
-                            <span class="blog-category">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg>
-                                INDUSTRY
-                            </span>
-                            <h3 class="blog-title">Dagartech successfully completes the installation of a High Power generator set in the winery of Pago de Carraovejas</h3>
-                            <a href="#" class="btn-see-case">
-                                Read Blog
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
+                            <div class="blog-meta">
+                                <span class="blog-date">21 Dec, 2025</span>
+                                <span class="blog-category">MARKETING</span>
+                            </div>
+                            <h3 class="blog-title">Perspiciatis omnis velit et eiusmod voluptatem magnam mollitia dolores aut obcaecati quis exercitation sit</h3>
+                            <p class="blog-excerpt">Laudantium, consequa.dssafkasdfksdtkasdfjkasdfjasdkfjasdfjkasdfjkasdfkasdfj</p>
+                            <a href="#" class="blog-read-more">Read More →</a>
                         </div>
                     </div>
                 </article>
@@ -148,7 +104,7 @@
 
         <!-- View All Button -->
        <div class="gps-btn-container">
-            <a href="#" class="gps-btn">
+            <a href="{{ route('blog') }}" class="gps-btn">
                 See all Blog Cases
                 <span class="gps-btn-icon">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -225,23 +181,19 @@
     background: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.blog-card:hover .blog-card-inner {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-}
+
 
 /* Blog Image */
 .blog-image-wrapper {
     position: relative;
     width: 100%;
-    height: 240px;
+    height: 200px;
     overflow: hidden;
     background: #f0f0f0;
 }
@@ -250,93 +202,75 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.blog-card:hover .blog-image {
-    transform: scale(1.05);
-}
-
-/* Application Badge */
-.application-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(255, 255, 255, 0.95);
-    color: #666;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    backdrop-filter: blur(10px);
 }
 
 /* Blog Content */
 .blog-content {
-    padding: 25px;
+    padding: 30px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
 
-/* Blog Category */
-.blog-category {
-    display: inline-flex;
+/* Blog Meta */
+.blog-meta {
+    display: flex;
     align-items: center;
-    gap: 6px;
-    color: #cc3366;
+    justify-content: space-between;
+    margin-bottom: 12px;
     font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    margin-bottom: 15px;
 }
 
-.blog-category svg {
-    width: 16px;
-    height: 16px;
-    stroke: #cc3366;
+.blog-date {
+    color: #666;
+    font-weight: 500;
+}
+
+/* Blog Category */
+.blog-category {
+    display: inline-block;
+    background: #e8f0f7;
+    color: #0066cc;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
 }
 
 /* Blog Title */
 .blog-title {
     font-size: 18px;
     font-weight: 600;
-    color: #2c3e50;
+    color: #1a202c;
     line-height: 1.5;
-    margin: 0;
+    margin: 12px 0 16px 0;
 }
 
-/* See Case Button */
-.btn-see-case {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #cc3366;
-    color: white;
-    padding: 12px 28px;
-    border-radius: 6px;
+/* Blog Excerpt */
+.blog-excerpt {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0 0 auto 0;
+    flex-grow: 1;
+}
+
+/* Read More Link */
+.blog-read-more {
+    display: inline-block;
+    color: #e91e63;
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
-    margin-top: 20px;
+    margin-top: 16px;
     transition: all 0.3s ease;
-    align-self: flex-start;
 }
 
-.btn-see-case:hover {
-    background: #b02954;
-    gap: 12px;
-}
-
-.btn-see-case svg {
-    width: 18px;
-    height: 18px;
-    transition: transform 0.3s ease;
-}
-
-.btn-see-case:hover svg {
-    transform: translateX(4px);
+.blog-read-more:hover {
+    gap: 4px;
+    letter-spacing: 0.5px;
 }
 
 /* Footer */

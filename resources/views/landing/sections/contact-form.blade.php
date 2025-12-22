@@ -16,10 +16,15 @@
                     </div>
                     <div class="form-row">
                         <input type="tel" name="phone" placeholder="Phone">
-                        <input type="text" name="company" placeholder="Company">
+                        <select name="industry" class="form-select" required>
+                            <option value="" disabled selected>Select your industry</option>
+                            <option value="industry_one">Industry One</option>
+                            <option value="industry_two">Industry Two</option>
+                            <option value="industry_four">Industry Four</option>
+                        </select>
                     </div>
                     <div class="form-row">
-                        <textarea name="message" rows="4" placeholder="Tell us about your project" required></textarea>
+                        <textarea name="message" rows="4" placeholder="Additional Details!" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary-black">Send message</button>
                 </form>

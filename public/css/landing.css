@@ -154,8 +154,8 @@ body {
 }
 
 .btn-primary {
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
+    background: var(--primary-color);
+    color: var(--white);
 }
 
 .btn-primary:hover {
@@ -966,7 +966,7 @@ body {
     background: var(--white);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border : 1px solid var(--border-color);
     transition: transform 0.3s;
 }
 
@@ -1155,7 +1155,8 @@ body {
 }
 
 .form-row input,
-.form-row textarea {
+.form-row textarea,
+.form-row select {
     width: 100%;
     padding: 18px 24px;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1165,6 +1166,23 @@ body {
     font-family: inherit;
     font-size: 16px;
     transition: all 0.3s ease;
+}
+
+.form-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.form-select option {
+    background: rgba(0, 0, 0, 0.9);
+    color: var(--white);
+    padding: 12px;
+}
+
+.form-select option:hover {
+    background: var(--primary-color);
 }
 
 .form-row textarea {
@@ -1178,7 +1196,8 @@ body {
 }
 
 .form-row input:focus,
-.form-row textarea:focus {
+.form-row textarea:focus,
+.form-row select:focus {
     outline: none;
     background: rgba(255, 255, 255, 0.1);
     border-color: var(--primary-color);

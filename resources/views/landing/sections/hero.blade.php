@@ -12,8 +12,8 @@
                     Reliable Power Solutions for Global Infrastructure
                 </h1>
                 <div class="hero-actions">
-                    <a href="#contact" class="btn-hero-primary">
-                        Contact Us
+                    <a href="{{ route('contact') }}" class="btn-hero-primary">
+                            Contact
                     </a>
                 </div>
             </div>
@@ -33,8 +33,9 @@
                     High-Performance Low Emissions & Fuel Efficiency
                 </h1>
                 <div class="hero-actions">
-                    <a href="#contact" class="btn-hero-primary">
-                        Contact Us
+                  
+                    <a href="{{ route('contact') }}" class="btn-hero-primary">
+                            Contact
                     </a>
                 </div>
             </div>
@@ -54,8 +55,8 @@
                     Reliable Backup Generators for Uninterrupted Operations
                 </h1>
                 <div class="hero-actions">
-                    <a href="#contact" class="btn-hero-primary">
-                        Contact Us
+                    <a href="{{ route('contact') }}" class="btn-hero-primary">
+                            Contact
                     </a>
                 </div>
             </div>

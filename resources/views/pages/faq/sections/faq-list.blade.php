@@ -10,7 +10,7 @@
         
         <div class="faq-container">
             <!-- General Questions -->
-            <div class="faq-item" data-category="general">
+            <div class="faq-item active" data-category="general">
                 <div class="faq-question">
                     <h3>What generator brands are in Dubai?</h3>
                     <span class="faq-toggle">+</span>

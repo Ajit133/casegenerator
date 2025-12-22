@@ -1,7 +1,6 @@
 <section class="cta-section">
-    <div class="cta-background">
-        <div class="container">
-            <div class="cta-content">
+    <div class="container">
+        <div class="cta-content">
                
                 <div class="quote-form-section">
                     <h3 class="form-title">Request A Quote</h3>
@@ -46,9 +45,10 @@
                         </div>
                         
                         <button type="submit" class="btn btn-primary-white">Submit Quote Request</button>
+                        
+                        <p class="form-response-message">We will get back to you within 24 hours, or call us at +971 6 530 0377.</p>
                     </form>
                 </div>
-            </div>
         </div>
     </div>
 </section>

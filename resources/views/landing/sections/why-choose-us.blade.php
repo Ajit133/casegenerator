@@ -106,10 +106,7 @@
             </div>
         </div>
 
-        <!-- Call to Action -->
-        <div class="why-choose-cta">
-            <p class="cta-text">Ready to experience the difference?</p>
-            <a href="#contact" class="btn btn-primary">Get in Touch</a>
-        </div>
+       
+       
     </div>
 </section>

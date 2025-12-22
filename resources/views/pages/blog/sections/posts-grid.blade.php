@@ -148,8 +148,92 @@
 
         /* Pagination */
         .pagination-wrapper {
-            margin-top: 60px;
+            margin-top: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pagination {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: #ffffff;
+            padding: 13px 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .pagination .page-item {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pagination .page-link {
+            min-width: 40px;
+            height: 40px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #64748b;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .pagination .page-link:hover {
+            background-color: #f1f5f9;
+            color: var(--primary-color);
+            border-color: #e2e8f0;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border-color: var(--primary-color);
+            cursor: default;
+        }
+
+        .pagination .page-item.active .page-link:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .pagination .page-item.disabled .page-link {
+            color: #cbd5e1;
+            cursor: not-allowed;
+            background-color: transparent;
+            border-color: transparent;
+        }
+
+        .pagination .page-item.disabled .page-link:hover {
+            background-color: transparent;
+            border-color: transparent;
+        }
+
+        .pagination .page-link.ellipsis {
+            cursor: default;
+            pointer-events: none;
+            color: #94a3b8;
+            border: none;
+        }
+
+        /* Pagination Text */
+        .pagination-info {
+            margin-top: 16px;
             text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-left: 10px;
         }
 
         /* No Posts */
@@ -194,9 +278,11 @@
                 @endforeach
             </div>
             
-            <div class="pagination-wrapper">
-                {{ $posts->links() }}
-            </div>
+            @if($posts->hasPages())
+                <div class="pagination-wrapper">
+                    {{ $posts->render('pagination::modern') }}
+                </div>
+            @endif
         @else
             <div class="no-posts">
                 <div class="no-posts-icon">📝</div>

@@ -5,6 +5,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // FAQ Toggle functionality
     const faqItems = document.querySelectorAll('.faq-item');
     
+    // Open first FAQ item by default
+    if (faqItems.length > 0) {
+        faqItems[0].classList.add('active');
+    }
+    
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
         

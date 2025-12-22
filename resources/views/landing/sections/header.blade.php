@@ -10,9 +10,9 @@
                 <li><a href="{{ route('blog') }}">Blog</a></li>
                 <li><a href="{{ route('awards') }}">Awards & Certificates</a></li>
                 <li><a href="{{ route('faq') }}">FAQ</a></li>
-                <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                <li><a href="">Request a Quote</a></li>
             </ul>
-            <a href="{{ route('contact') }}" class="btn btn-primary">Contact</a>
+            <a href="" class="btn btn-primary">Request a Quote</a>
         </nav>
     </div>
 </header>

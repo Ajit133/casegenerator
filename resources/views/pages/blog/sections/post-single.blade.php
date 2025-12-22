@@ -124,7 +124,6 @@
         .featured-image-wrapper {
             margin: 2.5rem 0;
             overflow: hidden;
-            border-radius: 0.75rem;
         }
 
         .featured-image {
@@ -132,7 +131,6 @@
             height: auto;
             display: block;
             background-color: #f1f5f9;
-            border-radius: 0.75rem;
             box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
             transition: box-shadow 0.3s ease;
         }
@@ -239,7 +237,6 @@
         .post-body img {
             max-width: 100%;
             height: auto;
-            border-radius: 0.5rem;
             margin: 1.5rem 0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s ease, box-shadow 0.2s ease;

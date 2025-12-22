@@ -283,8 +283,8 @@
 .section-subtitle {
     display: inline-block;
     color: #cc3366;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 15px;

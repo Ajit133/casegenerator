@@ -13,9 +13,8 @@
                 <li> <a href="{{ route('contact') }}" >
                             Contact
                     </a></li>
-                {{-- <li><a href="">Request a Quote</a></li> --}}
             </ul>
-            <a  class="btn btn-primary">Request a Quote</a>
+            <a href="{{ route('home') }}#contact-form" class="btn btn-primary">Request a Quote</a>
         </nav>
     </div>
 </header>

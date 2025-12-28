@@ -50,12 +50,21 @@ class QuoteRequestResource extends Resource
                         ->maxLength(20)
                         ->placeholder('Enter phone number'),
 
+                    TextInput::make('product_name')
+                        ->label('Product Name')
+                        ->maxLength(255)
+                        ->placeholder('Product name (if applicable)'),
+
                     Select::make('industry')
-                        ->required()
                         ->options([
-                            'industry_one' => 'Industry One',
-                            'industry_two' => 'Industry Two',
-                            'industry_four' => 'Industry Four',
+                            'construction' => 'Construction',
+                            'manufacturing' => 'Manufacturing',
+                            'healthcare' => 'Healthcare',
+                            'data-center' => 'Data Center',
+                            'hospitality' => 'Hospitality',
+                            'retail' => 'Retail',
+                            'residential' => 'Residential',
+                            'other' => 'Other',
                         ])
                         ->placeholder('Select an industry'),
 
@@ -78,18 +87,26 @@ class QuoteRequestResource extends Resource
                     ->searchable()
                     ->sortable(),
 
+                TextColumn::make('product_name')
+                    ->label('Product')
+                    ->searchable()
+                    ->sortable()
+                    ->placeholder('N/A'),
+
                 TextColumn::make('email')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('phone')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->placeholder('N/A'),
 
                 TextColumn::make('industry')
                     ->searchable()
                     ->sortable()
-                    ->formatStateUsing(fn (string $state): string => ucwords(str_replace('_', ' ', $state))),
+                    ->formatStateUsing(fn (?string $state): string => $state ? ucwords(str_replace('-', ' ', $state)) : 'N/A')
+                    ->placeholder('N/A'),
 
                 TextColumn::make('created_at')
                     ->dateTime()

@@ -5,6 +5,7 @@ use App\Models\Post;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProductsServicesController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AwardsController;
 use App\Http\Controllers\FaqController;
@@ -19,7 +20,16 @@ Route::get('/', [LandingPageController::class, 'index'])->name('home');
 // Page routes
 Route::get('/about-us', [AboutController::class, 'index'])->name('about');
 Route::get('/products-services', [ProductsServicesController::class, 'index'])->name('products-services');
-Route::get('/products-services/quote/{productId}', [ProductsServicesController::class, 'requestQuote'])->name('products.quote-request');
+
+// Product routes
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/{product:slug}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/products/{product:slug}/quote', [ProductController::class, 'quoteRequest'])->name('products.quote-request');
+Route::post('/products/{product:slug}/quote', [ProductController::class, 'storeQuoteRequest'])->name('products.quote-request.store');
+Route::get('/products/{product:slug}/download-pdf', [ProductController::class, 'downloadPdf'])->name('products.download-pdf');
+
+// Legacy route support
+Route::get('/products-services/quote/{productId}', [ProductsServicesController::class, 'requestQuote'])->name('legacy.products.quote-request');
 Route::get('/featured-projects', [FeaturedProjectsController::class, 'index'])->name('featured-projects');
 
 // Project routes

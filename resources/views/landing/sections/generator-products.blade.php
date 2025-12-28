@@ -219,7 +219,7 @@
             text-decoration: none;
             transition: all 0.3s ease;
             gap: 16px;
-            box-shadow: 0 4px 15px rgba(204, 51, 102, 0.3); /* Soft colored shadow */
+            box-shadow: 0 4px 15px rgba(249, 156, 27, 0.3); /* Soft colored shadow */
         }
 
         .gps-btn:hover {
@@ -254,7 +254,7 @@
         <!-- Section Header -->
         <div class="gps-header">
             <span class="gps-subtitle">Explore Recent Works</span>
-            <h2 class="gps-title">Featured <span style="color: #cc3366;">Projects</span></h2>
+            <h2 class="gps-title">Featured <span style="color: var(--primary-color);">Projects</span></h2>
         </div>
 
         <div class="gps-grid">

@@ -260,7 +260,7 @@
 /* Read More Link */
 .blog-read-more {
     display: inline-block;
-    color: #e91e63;
+    color: var(--primary-color);
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;

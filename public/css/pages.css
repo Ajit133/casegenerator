@@ -2,7 +2,7 @@
 
 /* Page Hero */
 .page-hero {
-    background: linear-gradient(135deg, #7A1E3A 0%, #AC2A54 50%, #7A1E3A 100%);
+    background: linear-gradient(135deg, #043B72, #4FA3E3);
     color: var(--white);
     padding: 120px 0 100px;
     position: relative;
@@ -26,7 +26,7 @@
     position: absolute;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(204, 51, 102, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(4, 59, 114, 0.15) 0%, transparent 70%);
     bottom: -250px;
     right: -100px;
     pointer-events: none;
@@ -1919,7 +1919,7 @@
 
 .agile-services-box {
     margin-top: 60px;
-    background: linear-gradient(to right, #8E1F43, #C33162);
+    background: linear-gradient(to right, var(--primary-color), var(--primary-hover));
     padding: 50px;
     border-radius: 30px;
     color: white;

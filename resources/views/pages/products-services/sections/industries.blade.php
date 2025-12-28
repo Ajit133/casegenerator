@@ -105,7 +105,7 @@
     display: inline-flex !important;
     align-items: center !important;
     gap: 10px !important;
-    background: linear-gradient(135deg, #C33162, #a0264c) !important;
+    background: linear-gradient(135deg, var(--primary-color-), var(--primary-color-)) !important;
     color: white !important;
     padding: 15px 25px !important;
     border-radius: 50px !important;
@@ -114,14 +114,14 @@
     font-size: 1rem !important;
     transition: all 0.3s ease !important;
     border: 2px solid transparent !important;
-    box-shadow: 0 4px 15px rgba(195, 49, 98, 0.3) !important;
+    box-shadow: 0 4px 15px rgba(249, 156, 27, 0.4) !important;
 }
 
 .agile-badge.download-btn:hover {
-    background: linear-gradient(135deg, #a0264c, #C33162) !important;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover)) !important;
     transform: translateY(-2px) !important;
-    box-shadow: 0 8px 25px rgba(195, 49, 98, 0.4) !important;
-    border-color: #C33162 !important;
+    box-shadow: 0 8px 25px rgba(249, 156, 27, 0.4) !important;
+    border-color: var(--primary-hover) !important;
 }
 
 .agile-badge.download-btn i {

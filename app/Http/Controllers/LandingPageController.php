@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
@@ -12,6 +13,12 @@ class LandingPageController extends Controller
         // Fetch latest blog posts
         $posts = Post::latest()->take(3)->get();
         
-        return view('landing.index', compact('posts'));
+        // Fetch featured projects for homepage
+        $featuredProjects = Project::publishedAndFeatured()
+            ->latest()
+            ->take(6)
+            ->get();
+        
+        return view('landing.index', compact('posts', 'featuredProjects'));
     }
 }

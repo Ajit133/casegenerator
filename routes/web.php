@@ -10,6 +10,7 @@ use App\Http\Controllers\AwardsController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FeaturedProjectsController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\QuoteRequestController;
 
 // Landing page route
@@ -20,6 +21,14 @@ Route::get('/about-us', [AboutController::class, 'index'])->name('about');
 Route::get('/products-services', [ProductsServicesController::class, 'index'])->name('products-services');
 Route::get('/products-services/quote/{productId}', [ProductsServicesController::class, 'requestQuote'])->name('products.quote-request');
 Route::get('/featured-projects', [FeaturedProjectsController::class, 'index'])->name('featured-projects');
+
+// Project routes
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+Route::get('/projects/{project:slug}', [ProjectController::class, 'show'])->name('projects.show');
+
+// API route for featured projects
+Route::get('/api/featured-projects', [ProjectController::class, 'featured'])->name('api.featured-projects');
+
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/awards-certificates', [AwardsController::class, 'index'])->name('awards');
 Route::get('/faq', [FaqController::class, 'index'])->name('faq');
@@ -68,3 +77,8 @@ Route::get('/debug-post/{slug}', function ($slug) {
         'full_path' => $post->featured_image ? storage_path('app/public/' . $post->featured_image) : null,
     ]);
 });
+
+// Test route for projects system (remove in production)
+if (app()->environment('local', 'development')) {
+    require __DIR__ . '/test.php';
+}

@@ -40,95 +40,24 @@
                     </div>
                 @endif
 
-                <div class="form-card">
-                    <h2>Quote Request Form</h2>
-                    <p class="form-intro">Fill out the form below and we'll get back to you with a detailed quote within 24 hours.</p>
-
-                    <form method="POST" action="{{ route('products.quote-request.store', $product) }}" class="quote-form">
-                        @csrf
-                        
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" 
-                                   id="name" 
-                                   name="name" 
-                                   value="{{ old('name') }}"
-                                   required
-                                   class="form-control @error('name') is-invalid @enderror">
-                            @error('name')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" 
-                                   id="email" 
-                                   name="email" 
-                                   value="{{ old('email') }}"
-                                   required
-                                   class="form-control @error('email') is-invalid @enderror">
-                            @error('email')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone">Phone Number *</label>
-                            <input type="tel" 
-                                   id="phone" 
-                                   name="phone" 
-                                   value="{{ old('phone') }}"
-                                   required
-                                   class="form-control @error('phone') is-invalid @enderror">
-                            @error('phone')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="industry">Industry/Application</label>
-                            <select id="industry" 
-                                    name="industry" 
-                                    class="form-control @error('industry') is-invalid @enderror">
-                                <option value="">Select your industry</option>
-                                <option value="construction" {{ old('industry') == 'construction' ? 'selected' : '' }}>Construction</option>
-                                <option value="manufacturing" {{ old('industry') == 'manufacturing' ? 'selected' : '' }}>Manufacturing</option>
-                                <option value="healthcare" {{ old('industry') == 'healthcare' ? 'selected' : '' }}>Healthcare</option>
-                                <option value="data-center" {{ old('industry') == 'data-center' ? 'selected' : '' }}>Data Center</option>
-                                <option value="hospitality" {{ old('industry') == 'hospitality' ? 'selected' : '' }}>Hospitality</option>
-                                <option value="retail" {{ old('industry') == 'retail' ? 'selected' : '' }}>Retail</option>
-                                <option value="residential" {{ old('industry') == 'residential' ? 'selected' : '' }}>Residential</option>
-                                <option value="other" {{ old('industry') == 'other' ? 'selected' : '' }}>Other</option>
-                            </select>
-                            @error('industry')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Additional Requirements/Comments</label>
-                            <textarea id="message" 
-                                      name="message" 
-                                      rows="5"
-                                      placeholder="Please describe your specific needs, installation requirements, power requirements, or any other details that would help us provide an accurate quote."
-                                      class="form-control @error('message') is-invalid @enderror">{{ old('message') }}</textarea>
-                            @error('message')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">
-                            <i class="fas fa-paper-plane"></i>
-                            Submit Quote Request
-                        </button>
-
-                        <p class="form-note">
-                            <i class="fas fa-lock"></i>
-                            Your information is secure and will only be used to provide you with a quote.
-                        </p>
-                    </form>
-                </div>
+               <section class="product-description">
+                    <h2>Product Description</h2>
+                    <div class="rich-content">
+                        {!! $product->description !!}
+                    </div>
+                </section>
+                 @if($product->features && count($product->features) > 0)
+                <section class="product-features">
+                    <h2>Key Features</h2>
+                    <ul class="features-list">
+                        @foreach($product->features as $feature)
+                            @if(isset($feature['feature']) && $feature['feature'])
+                                <li>{{ $feature['feature'] }}</li>
+                            @endif
+                        @endforeach
+                    </ul>
+                </section>
+                @endif
             </div>
 
             <div class="product-summary">

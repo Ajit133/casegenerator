@@ -81,12 +81,45 @@ class ProductController extends Controller
             abort(404);
         }
 
+        // If product has an uploaded PDF file, download that instead
+        if ($product->hasPdfFile()) {
+            return $this->downloadUploadedPdf($product);
+        }
+
+        // Otherwise, generate a PDF from the product data
         $pdf = Pdf::loadView('pages.products.pdf', compact('product'))
             ->setPaper('a4', 'portrait');
 
         $filename = 'product-' . $product->slug . '.pdf';
         
         return $pdf->download($filename);
+    }
+
+    /**
+     * Download the uploaded PDF file for a product.
+     */
+    public function downloadUploadedPdf(Product $product)
+    {
+        // Ensure the product is published
+        if ($product->status !== 'published') {
+            abort(404);
+        }
+
+        // Check if product has a PDF file
+        if (!$product->hasPdfFile()) {
+            abort(404, 'PDF file not found.');
+        }
+
+        $filePath = storage_path('app/public/' . $product->pdf_file);
+        
+        // Check if file actually exists on disk
+        if (!file_exists($filePath)) {
+            abort(404, 'PDF file not found on disk.');
+        }
+
+        $fileName = $product->pdf_title ?: pathinfo($product->pdf_file, PATHINFO_BASENAME);
+        
+        return response()->download($filePath, $fileName);
     }
 
     /**

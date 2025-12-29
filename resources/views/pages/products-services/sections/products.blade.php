@@ -37,6 +37,11 @@
                                 <a href="{{ route('products.show', $product) }}" class="btn btn-outline-primary">
                                     View Details
                                 </a>
+                                @if($product->hasPdfFile())
+                                    <a href="{{ route('products.download-pdf', $product) }}" class="btn btn-secondary" title="{{ $product->pdf_title ?: 'Download PDF' }}">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </a>
+                                @endif
                                 <a href="{{ route('products.quote-request', $product) }}" class="btn btn-primary">
                                     Request Quote
                                 </a>

@@ -13,7 +13,7 @@
 <body>
     @include('landing.sections.header')
     
-    <section class="quote-hero">
+    {{-- <section class="quote-hero">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -27,7 +27,7 @@
         <h1 class="hero-title">Request Quote</h1>
         <p class="hero-subtitle">Get a personalized quote for {{ $product->title }}</p>
     </div>
-</section>
+</section> --}}
 
 <section class="quote-request-section">
     <div class="container">
@@ -256,6 +256,7 @@
 }
 
 .quote-request-section {
+    margin-top: 20px;
     padding: 4rem 0;
     background: #f9fafb;
 }

@@ -22,6 +22,8 @@ class Product extends Model
         'featured_image',
         'gallery_images',
         'content_images',
+        'pdf_file',
+        'pdf_title',
         'image_alt_text',
         'price',
         'power_range',
@@ -90,6 +92,11 @@ class Product extends Model
                     }
                 }
             }
+            
+            // Delete PDF file
+            if ($product->pdf_file && $disk->exists($product->pdf_file)) {
+                $disk->delete($product->pdf_file);
+            }
         });
     }
 
@@ -119,6 +126,34 @@ class Product extends Model
     public function hasFeaturedImage(): bool
     {
         return app(ImageService::class)->exists($this->featured_image);
+    }
+
+    /**
+     * Get the PDF file URL
+     */
+    protected function pdfFileUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->pdf_file ? Storage::disk('public')->url($this->pdf_file) : null
+        );
+    }
+    
+    /**
+     * Get the PDF file path for storage operations
+     */
+    protected function pdfFilePath(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->pdf_file ? storage_path('app/public/' . $this->pdf_file) : null,
+        );
+    }
+    
+    /**
+     * Check if PDF file exists in storage
+     */
+    public function hasPdfFile(): bool
+    {
+        return $this->pdf_file && Storage::disk('public')->exists($this->pdf_file);
     }
 
     /**

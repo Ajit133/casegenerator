@@ -51,9 +51,15 @@
                     <a href="{{ route('products.quote-request', $product) }}" class="btn btn-primary btn-lg">
                         <i class="fas fa-file-alt"></i> Request Quote
                     </a>
-                    <a href="{{ route('products.download-pdf', $product) }}" class="btn btn-outline-light btn-lg">
-                        <i class="fas fa-download"></i> Download PDF
-                    </a>
+                    @if($product->hasPdfFile())
+                        <a href="{{ route('products.download-pdf', $product) }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-file-pdf"></i> {{ $product->pdf_title ?: 'Download PDF' }}
+                        </a>
+                    @else
+                        <a href="{{ route('products.download-pdf', $product) }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-download"></i> Download PDF
+                        </a>
+                    @endif
                 </div>
             </div>
             

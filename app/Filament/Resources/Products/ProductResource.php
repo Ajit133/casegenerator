@@ -149,23 +149,31 @@ class ProductResource extends Resource
                         ->columnSpanFull()
                         ->helperText('Upload multiple images for the gallery (max 10 images, 5MB each)'),
 
-                    FileUpload::make('content_images')
-                        ->label('Content Images')
-                        ->helperText('Upload images that can be inserted into your content using the rich editor.')
-                        ->image()
+                   
+                ])
+                ->collapsible(),
+
+            Section::make('Documents')
+                ->schema([
+                    FileUpload::make('pdf_file')
+                        ->label('Product PDF/Brochure')
                         ->disk('public')
-                        ->multiple()
-                        ->directory('products/content')
+                        ->directory('products/pdfs')
                         ->visibility('public')
-                        ->maxFiles(20)
-                        ->maxSize(5120)
-                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif', 'image/webp'])
-                        ->imageResizeMode('cover')
-                        ->imageResizeTargetWidth(1200)
-                        ->imageResizeTargetHeight(900)
-                        ->reorderable()
+                        ->maxSize(10240) // 10MB max
+                        ->acceptedFileTypes(['application/pdf'])
+                        ->downloadable()
+                        ->previewable(false)
+                        ->openable()
                         ->columnSpanFull()
-                        ->helperText('These images will be available in the rich editor for insertion into content.'),
+                        ->helperText('Upload a PDF brochure, manual, or specification sheet (max 10MB)'),
+
+                    TextInput::make('pdf_title')
+                        ->label('PDF Display Title')
+                        ->maxLength(255)
+                        ->placeholder('e.g., Product Brochure, Technical Manual, Specifications')
+                        ->columnSpanFull()
+                        ->helperText('Optional: Custom title for the PDF file (if empty, will use filename)'),
                 ])
                 ->collapsible(),
 
@@ -263,6 +271,15 @@ class ProductResource extends Resource
                 IconColumn::make('is_featured')
                     ->boolean()
                     ->label('Featured'),
+                
+                IconColumn::make('pdf_file')
+                    ->boolean()
+                    ->label('PDF')
+                    ->trueIcon('heroicon-o-document-text')
+                    ->falseIcon('heroicon-o-minus')
+                    ->trueColor('success')
+                    ->falseColor('gray')
+                    ->getStateUsing(fn ($record): bool => !empty($record->pdf_file)),
                 
                 BadgeColumn::make('status')
                     ->colors([

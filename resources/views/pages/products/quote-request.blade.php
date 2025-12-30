@@ -13,21 +13,15 @@
 <body>
     @include('landing.sections.header')
     
-    {{-- <section class="quote-hero">
-    <div class="container">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('products.index') }}">Products</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('products.show', $product) }}">{{ $product->title }}</a></li>
-                <li class="breadcrumb-item active">Request Quote</li>
-            </ol>
-        </nav>
-        
-        <h1 class="hero-title">Request Quote</h1>
-        <p class="hero-subtitle">Get a personalized quote for {{ $product->title }}</p>
-    </div>
-</section> --}}
+    <section class="quote-hero">
+        <div class="container">
+          
+            
+            <h1 class="page-title">{{ $product->title }}</h1>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+
+        </div>
+    </section>
 
 <section class="quote-request-section">
     <div class="container">
@@ -193,31 +187,51 @@
 
 <style>
 .quote-hero {
-    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    background: linear-gradient(135deg, #043B72, #4FA3E3);
     color: white;
-    padding: 2rem 0;
+    padding: 120px  100px;
+    position: relative;
+    text-align: center;
+}
+
+.quote-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+    opacity: 0.1;
+    pointer-events: none;
 }
 
 .breadcrumb {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.5rem 1rem;
-    border-radius: 0.375rem;
-    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
 }
 
 .breadcrumb-item a {
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+.breadcrumb-item {
+    list-style-type: none;
 }
 
-.breadcrumb-item.active {
-    color: white;
-}
-
-.hero-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+.page-title {
+    font-size: 56px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+    line-height: 1.1;
 }
 
 .hero-subtitle {
@@ -226,7 +240,6 @@
 }
 
 .quote-request-section {
-    margin-top: 20px;
     padding: 4rem 0;
     background: #f9fafb;
 }

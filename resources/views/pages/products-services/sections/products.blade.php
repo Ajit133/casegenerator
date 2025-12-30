@@ -27,7 +27,9 @@
                 <div class="comparison-card">
                     <div class="card-visual {{ $index % 2 != 0 ? 'teal-theme' : '' }}">
                         <div class="visual-header">
-                            <div class="card-tag">HIGH POWER</div>
+                            @if($product->category)
+                            <div class="card-tag">{{ $product->category }}</div>
+                            @endif
                             
                         </div>
                         <div class="product-render">
@@ -136,7 +138,7 @@
 }
 
 .breadcrumb {
-    background: rgba(255, 255, 255, 0.1);
+   
     padding: 0.5rem 1rem;
     border-radius: 0.375rem;
     margin: 0;
@@ -350,7 +352,7 @@
     background: white;
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    
     height: 440px;
     
 }
@@ -566,7 +568,7 @@
     font-size: 0.9rem;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(59,130,246,0.3);
+    
 }
 
 .view-details-btn:hover {

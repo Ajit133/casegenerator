@@ -335,7 +335,7 @@
 
 
 .card-image-section {
-    
+
     position: relative;
     display: flex;
     flex-direction: column;
@@ -403,7 +403,8 @@
     z-index: 10;
 }
 
-.freq-badge, .phase-badge {
+.freq-badge,
+.phase-badge {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
     color: white;
@@ -519,7 +520,7 @@
 
 .download-btn i {
     font-size: 16px;
-    background: #3b82f6;
+    background: var(--primary-color);
     color: white;
     width: 32px;
     height: 32px;
@@ -531,7 +532,7 @@
 }
 
 .download-btn:hover i {
-    background: #1e3a8a;
+    background: var(--primary-hover);
 }
 
 /* Responsive Design */
@@ -539,7 +540,7 @@
     .generator-card {
         grid-template-columns: 45% 55%;
     }
-    
+
     .card-specs-section {
         padding: 30px 25px;
     }
@@ -549,20 +550,20 @@
     .generator-card {
         grid-template-columns: 1fr;
     }
-    
+
     .card-image-section {
         min-height: 280px;
     }
-    
+
     .card-specs-section {
         padding: 25px 20px;
     }
-    
+
     .generator-model {
         font-size: 22px;
         margin-bottom: 20px;
     }
-    
+
     .specs-row-inline {
         grid-template-columns: 1fr;
         gap: 15px;
@@ -1091,7 +1092,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
+    background:
         linear-gradient(45deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%),
         repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.1) 10px, rgba(255, 255, 255, 0.1) 20px);
     pointer-events: none;
@@ -1174,6 +1175,7 @@
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1595,7 +1597,7 @@
 
 .faq-contact-section {
     padding: 60px 0 80px;
-    background:white;
+    background: white;
 }
 
 .faq-contact-box {
@@ -1675,7 +1677,7 @@
     background: var(--white);
     padding: 40px;
     border-radius: 12px;
-    
+
 }
 
 .form-grid {
@@ -1748,7 +1750,8 @@
 .map-container {
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: none; /* remove map shadow globally */
+    box-shadow: none;
+    /* remove map shadow globally */
 }
 
 /* Contact Two Column Section (Contact Page) */
@@ -1761,7 +1764,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
-    align-items: stretch; /* ensure equal column heights */
+    align-items: stretch;
+    /* ensure equal column heights */
 }
 
 .contact-form-card,
@@ -1770,7 +1774,8 @@
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 30px;
-    box-shadow: none; /* remove any card shadows */
+    box-shadow: none;
+    /* remove any card shadows */
     display: flex;
     flex-direction: column;
 }
@@ -1788,7 +1793,8 @@
     gap: 20px;
     background: transparent;
     border: none;
-    box-shadow: none; /* ensure no form shadow */
+    box-shadow: none;
+    /* ensure no form shadow */
     flex: 1;
 }
 
@@ -1843,6 +1849,7 @@
     .contact-grid {
         grid-template-columns: 1fr;
     }
+
     .contact-form-light .form-row {
         grid-template-columns: 1fr;
     }
@@ -2012,7 +2019,7 @@
 .service-phase-block {
     background: #f8faff;
     padding: 50px;
-    border-radius: 40px;
+    border-radius: 10px;
     border: 1px solid rgba(0, 27, 68, 0.05);
 }
 
@@ -2098,13 +2105,12 @@
     margin-top: 60px;
     background: linear-gradient(to right, var(--primary-color), var(--primary-hover));
     padding: 50px;
-    border-radius: 30px;
+    border-radius: 10px;
     color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 40px;
-    box-shadow: 0 20px 40px rgba(0, 27, 68, 0.2);
 }
 
 .agile-content {
@@ -2178,13 +2184,13 @@
     gap: 40px;
     position: relative;
     overflow: hidden;
-    
+
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .faq-support-card:hover {
     transform: translateY(-5px);
-   
+
 }
 
 .support-card-glow {
@@ -2278,13 +2284,13 @@
     font-weight: 700;
     font-size: 16px;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    
+
 }
 
 .btn-support-cta:hover {
     background: #e03a72;
     transform: scale(1.05);
-   
+
 }
 
 .btn-support-cta svg {

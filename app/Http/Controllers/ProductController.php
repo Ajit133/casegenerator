@@ -6,7 +6,6 @@ use App\Models\Product;
 use App\Models\QuoteRequest;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Barryvdh\DomPDF\Facade\Pdf;
 
 class ProductController extends Controller
 {
@@ -81,18 +80,13 @@ class ProductController extends Controller
             abort(404);
         }
 
-        // If product has an uploaded PDF file, download that instead
+        // If product has an uploaded PDF file, download it
         if ($product->hasPdfFile()) {
             return $this->downloadUploadedPdf($product);
         }
 
-        // Otherwise, generate a PDF from the product data
-        $pdf = Pdf::loadView('pages.products.pdf', compact('product'))
-            ->setPaper('a4', 'portrait');
-
-        $filename = 'product-' . $product->slug . '.pdf';
-        
-        return $pdf->download($filename);
+        // If no PDF is uploaded, return 404 (the frontend should handle the UI state)
+        abort(404, 'PDF file not found.');
     }
 
     /**

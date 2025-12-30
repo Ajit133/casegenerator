@@ -56,9 +56,9 @@
                             <i class="fas fa-file-pdf"></i> {{ $product->pdf_title ?: 'Download PDF' }}
                         </a>
                     @else
-                        <a href="{{ route('products.download-pdf', $product) }}" class="btn btn-outline-light btn-lg">
-                            <i class="fas fa-download"></i> Download PDF
-                        </a>
+                        <div class="btn btn-outline-light btn-lg disabled" title="PDF format not available for this product">
+                            <i class="fas fa-file-slash"></i> PDF Not Available
+                        </div>
                     @endif
                 </div>
             </div>
@@ -118,15 +118,17 @@
             <aside class="sidebar">
                 @if($product->specifications && count($product->specifications) > 0)
                 <div class="specs-card">
-                    <h3>Specifications</h3>
-                    <dl class="specs-list">
+                    <h3><i class="fas fa-microchip"></i> Specifications</h3>
+                    <div class="specs-list">
                         @foreach($product->specifications as $spec)
                             @if(isset($spec['spec_name']) && isset($spec['spec_value']) && $spec['spec_name'] && $spec['spec_value'])
-                                <dt>{{ $spec['spec_name'] }}</dt>
-                                <dd>{{ $spec['spec_value'] }}</dd>
+                                <div class="spec-item">
+                                    <span class="spec-label">{{ $spec['spec_name'] }}</span>
+                                    <span class="spec-value">{{ $spec['spec_value'] }}</span>
+                                </div>
                             @endif
                         @endforeach
-                    </dl>
+                    </div>
                 </div>
                 @endif
                 
@@ -351,22 +353,79 @@
     color: #111827;
 }
 
+/* Specifications Card Styling */
+.specs-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid #eef2f6 !important;
+}
+
+.specs-card h3 {
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    color: #1a202c !important;
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+    padding-bottom: 12px !important;
+    border-bottom: 2px solid #f7fafc !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+.specs-card h3 i {
+    color: var(--primary-color, #3b82f6);
+    font-size: 1.1rem;
+}
+
 .specs-list {
-    margin: 0;
+    display: grid !important;
+    gap: 12px !important;
 }
 
-.specs-list dt {
-    font-weight: 500;
-    color: #6b7280;
-    font-size: 0.875rem;
-    margin-bottom: 0.25rem;
+.spec-item {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 12px 16px !important;
+    background: #f8fafc !important;
+    border-radius: 10px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: 1px solid transparent !important;
 }
 
-.specs-list dd {
-    font-weight: 600;
-    color: #111827;
-    margin-bottom: 1rem;
-    margin-left: 0;
+.spec-item:hover {
+    background: #ffffff !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+    border-color: #e2e8f0 !important;
+}
+
+.spec-label {
+    font-size: 0.875rem !important;
+    color: #64748b !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.01em !important;
+}
+
+.spec-value {
+    font-size: 0.9375rem !important;
+    color: #1e293b !important;
+    font-weight: 700 !important;
+    text-align: right !important;
+}
+
+@media (max-width: 480px) {
+    .spec-item {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 4px !important;
+    }
+    .spec-value {
+        text-align: left !important;
+    }
 }
 
 .btn {
@@ -421,6 +480,14 @@
 .btn-outline-primary:hover {
     background: #3b82f6;
     color: white;
+}
+
+.btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .info-list {

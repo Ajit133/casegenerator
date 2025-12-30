@@ -21,4 +21,18 @@
             {{ $product->pdf_title ?: 'Download PDF' }}
         </a>
     @endif
+@else
+    @if($variant === 'link')
+        <span class="pdf-download-link disabled {{ $class }}" title="PDF not available">
+            <i class="fas fa-file-slash"></i> PDF Not Available
+        </span>
+    @elseif($variant === 'icon')
+        <span class="pdf-download-icon disabled {{ $class }}" title="PDF not available">
+            <i class="fas fa-file-slash"></i>
+        </span>
+    @else
+        <button class="btn btn-outline-secondary disabled {{ $class }}" title="PDF not available">
+            <i class="fas fa-file-slash"></i> PDF Not Available
+        </button>
+    @endif
 @endif

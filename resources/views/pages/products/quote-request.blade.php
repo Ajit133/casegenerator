@@ -117,19 +117,42 @@
                         </div>
 
                         <div class="product-actions">
-                            <a href="{{ route('products.show', $product) }}" class="btn btn-outline-primary">
+                            <!-- <a href="{{ route('products.show', $product) }}" class="btn btn-outline-primary">
                                 <i class="fas fa-eye"></i>
                                 View Full Details
-                            </a>
-                            <a href="{{ route('products.download-pdf', $product) }}" class="btn btn-outline-secondary">
-                                <i class="fas fa-download"></i>
-                                Download PDF
-                            </a>
+                            </a> -->
+                            @if($product->hasPdfFile())
+                                <a href="{{ route('products.download-pdf', $product) }}" class="btn btn-outline-secondary">
+                                    <i class="fas fa-file-pdf"></i>
+                                    Download PDF
+                                </a>
+                            @else
+                                <div class="btn btn-outline-secondary disabled" title="PDF format not available for this product">
+                                    <i class="fas fa-file-slash"></i>
+                                    PDF Not Available
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
 
-                <div class="contact-card">
+               
+                @if($product->specifications && count($product->specifications) > 0)
+                <div class="specs-card">
+                    <h3><i class="fas fa-microchip"></i> Specifications</h3>
+                    <div class="specs-list">
+                        @foreach($product->specifications as $spec)
+                            @if(isset($spec['spec_name']) && isset($spec['spec_value']) && $spec['spec_name'] && $spec['spec_value'])
+                                <div class="spec-item">
+                                    <span class="spec-label">{{ $spec['spec_name'] }}</span>
+                                    <span class="spec-value">{{ $spec['spec_value'] }}</span>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+                @endif
+                 <div class="contact-card">
                     <h3>Need Help?</h3>
                     <p>Our team is here to help you find the perfect generator solution.</p>
                     
@@ -218,7 +241,7 @@
     background: white;
     border-radius: 1rem;
     padding: 2rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-top: 1.5rem;
     border: 1px solid #e5e7eb;
 }
 
@@ -395,7 +418,7 @@
 }
 
 .contact-item i {
-    color: #3b82f6;
+    color: var(--primary-color);
     width: 20px;
     margin-top: 0.125rem;
 }
@@ -472,6 +495,15 @@
     color: #374151;
 }
 
+.btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: #f3f4f6;
+    border-color: #d1d5db;
+    color: #9ca3af;
+}
+
 @media (max-width: 1024px) {
     .quote-grid {
         grid-template-columns: 1fr;
@@ -493,6 +525,82 @@
     
     .product-actions {
         flex-direction: column;
+    }
+}
+
+/* Specifications Card Styling */
+.specs-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    
+    border: 1px solid #e5e7eb;
+    margin-top: 1.5rem;
+}
+
+.specs-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f7fafc;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.specs-card h3 i {
+    color: var(--primary-color, #10b981);
+    font-size: 1.1rem;
+}
+
+.specs-list {
+    display: grid;
+    gap: 12px;
+}
+
+.spec-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    
+    border-radius: 10px;
+ 
+    border: 1px solid transparent;
+}
+
+/* .spec-item:hover {
+    background: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-color: #e2e8f0;
+} */
+
+.spec-label {
+    font-size: 0.875rem;
+    color: #64748b;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.spec-value {
+    font-size: 0.9375rem;
+    color: #1e293b;
+    font-weight: 700;
+    text-align: right;
+}
+
+@media (max-width: 480px) {
+    .spec-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    .spec-value {
+        text-align: left;
     }
 }
 </style>

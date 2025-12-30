@@ -1,7 +1,20 @@
-<section class="products-listing">
-    <h2 class="section-title text-center">Providing Innovative & Sustainable Solutions</h2>
-        <p class="section-subtitle text-center">Building The Future, Restoring The Past</p>
+@php
+    function getProductSpec($product, $search) {
+        if (!$product || !$product->specifications) return null;
+        foreach ($product->specifications as $spec) {
+            if (isset($spec['spec_name']) && stripos($spec['spec_name'], $search) !== false) {
+                return $spec['spec_value'];
+            }
+        }
+        return null;
+    }
+@endphp
+
+<section class="products-showcase">
     <div class="container">
+        <h2 class="section-title text-center">Providing Innovative & Sustainable Solutions</h2>
+        <p class="section-subtitle text-center">Building The Future, Restoring The Past</p>
+        
         @if($products->isEmpty())
             <div class="text-center py-5">
                 <h3>No products available at the moment</h3>
@@ -9,60 +22,92 @@
                 <a href="{{ route('contact') }}" class="btn btn-primary">Contact Us for Information</a>
             </div>
         @else
-            <div class="products-grid">
-                @foreach($products as $product)
-                <article class="product-card">
-                    <div class="product-image">
-                        @if($product->featured_image)
-                            <img src="{{ $product->featured_image_url }}" 
-                                 alt="{{ $product->image_alt_text ?: $product->title }}" 
-                                 loading="lazy">
-                        @else
-                            <div class="placeholder-image">
-                                <i class="fas fa-cog"></i>
-                            </div>
-                        @endif
-                        
-                        @if($product->is_featured)
-                            <span class="featured-badge">Featured</span>
-                        @endif
-                        
-                        @if($product->category)
-                            <span class="category-badge">{{ $product->category }}</span>
-                        @endif
-                    </div>
-                    
-                    <div class="product-content">
-                        <h3 class="product-title">
-                            <a href="{{ route('products.show', $product) }}">{{ $product->title }}</a>
-                        </h3>
-                        
-                        @if($product->short_description)
-                            <p class="product-description">{{ $product->short_description }}</p>
-                        @endif
-                        
-                        <div class="product-meta">
-                            @if($product->power_range)
-                                <span class="power-range">
-                                    <i class="fas fa-bolt"></i> {{ $product->power_range }}
-                                </span>
-                            @endif
+            <div class="premium-grid">
+                @foreach($products as $index => $product)
+                <div class="comparison-card">
+                    <div class="card-visual {{ $index % 2 != 0 ? 'teal-theme' : '' }}">
+                        <div class="visual-header">
+                            <div class="card-tag">HIGH POWER</div>
                             
-                            @if($product->price)
-                                <span class="price">{{ $product->formatted_price }}</span>
+                        </div>
+                        <div class="product-render">
+                            @if($product->featured_image)
+                                <img src="{{ $product->featured_image_url }}" alt="{{ $product->title }}">
+                            @else
+                                <div class="no-image-placeholder">
+                                    <i class="fas fa-image"></i>
+                                    <span>No Image Found</span>
+                                </div>
                             @endif
                         </div>
-                        
-                        <div class="product-actions">
-                            {{-- <a href="{{ route('products.show', $product) }}" class="btn btn-outline-primary">
-                                View Details
-                            </a> --}}
-                            <a href="{{ route('products.quote-request', $product) }}" class="btn btn-primary">
+                        <div class="visual-footer">
+                            <div class="feature-badges">
+                                @if($product->power_range)
+                                    <span>{{ $product->power_range }}</span>
+                                @else
+                                    <span>50Hz</span>
+                                    <span>3 PHASES</span>
+                                @endif
+                            </div>
+                            <div class="brand-brand">
+                                <i class="fas fa-circle"></i> DAGARTECH
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-details">
+                        <div class="spec-grid">
+                            {{-- Power Spec --}}
+                            <div class="spec-group">
+                                <h2 class="product-model-overlay">{{ $product->title }}</h2>
+                                
+                                
+                            </div>
+                            
+                            <div class="power-voltage">
+                                {{-- Power Spec --}}
+                                @if($product->power_range)
+                                <div class="spec-item">
+                                    <div class="spec-icon-box"><i class="fas fa-bolt"></i></div>
+                                    <div class="spec-content">
+                                        <label class="spec-label">POWER RANGE</label>
+                                        <p class="spec-value">{{ $product->power_range }}</p>
+                                    </div>
+                                </div>
+                                @endif
+
+                                {{-- Voltage Spec --}}
+                                <div class="spec-item">
+                                    <div class="spec-icon-box"><i class="fas fa-plug"></i></div>
+                                    <div class="spec-content">
+                                        <label class="spec-label">VOLTAGE</label>
+                                        <p class="spec-value">{{ getProductSpec($product, 'Voltage') ?: '400/230V' }}</p>
+                                    </div>
+                                </div>
+
+                                {{-- Price Spec --}}
+                                @if($product->price)
+                                <div class="spec-item">
+                                    <div class="spec-icon-box"><i class="fas fa-tag"></i></div>
+                                    <div class="spec-content">
+                                        <label class="spec-label">ESTIMATED PRICE</label>
+                                        <p class="spec-value">{{ $product->price }}</p>
+                                    </div>
+                                </div>
+                                @endif
+                            </div>
+                            
+                            
+                           
+
+                           
+                        </div>
+                        <div class="card-actions">
+                            <a href="{{ route('products.quote-request', $product) }}" class="view-details-btn">
                                 View Details
                             </a>
                         </div>
                     </div>
-                </article>
+                </div>
                 @endforeach
             </div>
         @endif
@@ -72,7 +117,6 @@
  
     
     <style>
-<style>
 .hero-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
     color: white;
@@ -96,6 +140,12 @@
     padding: 0.5rem 1rem;
     border-radius: 0.375rem;
     margin: 0;
+}
+.power-voltage {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .breadcrumb-item a {
@@ -278,6 +328,266 @@
     
     .product-actions {
         flex-direction: column;
+    }
+}
+
+/* Showcase Grid Styles */
+.products-showcase {
+    padding: 6rem 0;
+    background-color: #f3f4f6;
+}
+
+.premium-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 4rem auto 0;
+}
+
+.comparison-card {
+    display: flex;
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    height: 440px;
+    
+}
+
+.no-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    gap: 1rem;
+    background: rgba(0,0,0,0.1);
+}
+
+.no-image-placeholder i {
+    font-size: 3rem;
+}
+
+.no-image-placeholder span {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+
+
+.card-visual {
+    flex: 0 0 50%;
+    background: linear-gradient(145deg, #374151, #111827);
+    position: relative;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.visual-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+    z-index: 10;
+}
+
+.card-tag {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    z-index: 10; /* Keep z-index for visibility */
+}
+
+.product-model-overlay {
+    color: black;
+    font-size: 18px; /* Smaller dynamic title text */
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: -0.02em;
+    z-index: 10; /* Keep z-index for visibility */
+}
+
+.product-render {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.product-render img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease;
+    will-change: transform;
+}
+
+.comparison-card:hover .product-render img {
+    transform: scale(1.08); /* Sophisticated slow zoom */
+    filter: brightness(1.1); /* Subtle lightning to show detail */
+}
+
+/* Add a subtle inner glow to the visual side */
+.card-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 80px rgba(0,0,0,0.3);
+    pointer-events: none;
+    z-index: 5;
+}
+
+.card-visual.teal-theme {
+    background: linear-gradient(145deg, #134e4a, #064e3b); /* Teal/Dark Green flavor */
+}
+
+.visual-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    z-index: 10;
+}
+
+.feature-badges {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.feature-badges span {
+    background: white;
+    color: #1f2937;
+    padding: 5px 14px;
+    border-radius: 50px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+
+.brand-brand {
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.card-details {
+    flex: 1;
+    padding: 2rem; /* Tightened padding */
+    display: flex;
+    flex-direction: column;
+}
+
+.spec-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem; /* Tightened gap */
+    flex: 1;
+}
+
+.spec-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+
+.spec-icon-box {
+    width: 38px;
+    height: 38px;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    flex-shrink: 0;
+    border: 1px solid #f1f5f9;
+}
+
+.spec-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.spec-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.spec-value {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.card-actions {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.view-details-btn {
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(59,130,246,0.3);
+}
+
+.view-details-btn:hover {
+    background: var(--primary-hover);
+    /* transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(59,130,246,0.4); */
+}
+
+@media (max-width: 1024px) {
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .comparison-card {
+        flex-direction: column;
+        height: auto;
+    }
+    .card-visual {
+        height: 250px;
     }
 }
 </style>

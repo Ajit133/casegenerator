@@ -3,8 +3,8 @@
         <div class="footer-content">
             <div class="footer-column">
                 <div class="footer-logo">
-                     <a href="/" class="logo">
-                <span class="logo-text"><span class="">Casa </span>Generators</span>
+                    <a href="/" class="logo">
+                <img src="{{ asset('images/Logo/Casagenerators Logo (1).png') }}" alt="Casagenerators Logo" class="logo-image">
             </a>
                 </div>
                 <div class="footer-links-group">

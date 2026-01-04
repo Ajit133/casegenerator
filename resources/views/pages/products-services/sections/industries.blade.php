@@ -84,19 +84,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="agile-services-box">
-            <div class="agile-content">
-                <h3 class="agile-title">Dedicated Customer Teams & An Agile Services</h3>
-                <p class="agile-text">
-                    Our worldwide presence ensures the timeliness, cost efficiency and compliance adherence required to ensure your production timelines are met.
-                </p>
-            </div>
-            <a href="{{ asset('images/Product_Services/Company-Brochure.pdf') }}" download class="agile-badge download-btn">
-                <i class="fa-solid fa-download"></i>
-                <span>Download Brochure</span>
-            </a>
-        </div>
     </div>
 </section>
 

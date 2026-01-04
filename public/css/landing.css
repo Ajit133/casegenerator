@@ -49,7 +49,8 @@ body {
 }
 
 .main-header.scrolled {
-    background: rgb(217 213 213 / 85%);
+    /* background: rgb(217 213 213 / 85%); */
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(15px);
     padding: 15px 0;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -117,7 +118,12 @@ body {
 }
 
 .main-header.scrolled .nav-menu a {
-    color: var(--white);
+    color: var(--text-dark);
+}
+
+.main-header.scrolled .btn-primary {
+    background: var(--primary-color) !important;
+    color: var(--white) !important;
 }
 
 .nav-menu a::after {
@@ -164,12 +170,12 @@ body {
 }
 
 .btn-primary-white {
-    background: var(--white);
+    background: #f5f5f5;
     color: var(--primary-blue);
 }
 
 .btn-primary-white:hover {
-    background: #f5f5f5;
+    background: rgb(178, 176, 176);
 }
 
 .btn-outline-primary {
@@ -636,8 +642,8 @@ body {
 }
 
 .section-action {
-    text-align: center;
-    margin-top: 40px;
+    margin-top: 5px;
+    text-align: left;
 }
 
 /* Tailor Made Section */
@@ -719,7 +725,7 @@ body {
 /* Generator Products Section */
 .generator-products-section {
     padding: 100px 0;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    background: white;
     position: relative;
     overflow: hidden;
 }
@@ -1107,8 +1113,9 @@ body {
 /* Contact Form Section */
 .contact-form-section {
     padding: 100px 0;
+    
     background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
-        url("../images/About_Us/casa_generator-1.jpeg");
+        url("../images/Product_Services/casablanca_contact_page.png");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -1125,9 +1132,9 @@ body {
 
 .contact-badge {
     display: inline-block;
-    background: rgba(204, 51, 102, 0.1);
+    background: rgba(250, 156, 29, 0.1);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(204, 51, 102, 0.3);
+    border: 1px solid rgba(250, 156, 29, 0.3);
     border-radius: 30px;
     padding: 8px 16px;
     margin-bottom: 24px;
@@ -1281,11 +1288,12 @@ body {
 /* Footer Styles */
 .main-footer {
     background: #043b72;
+    /* margin-top: 60px; */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: var(--white);
-    padding: 80px 0 40px;
+    padding: 45px 0 40px;
     position: relative;
 }
 
@@ -1888,7 +1896,7 @@ body {
 }
 
 .why-choose-header .section-subtitle {
-    color: var(--primary-color);
+    color: black;
     font-size: 16px;
     font-weight: 600;
     text-transform: uppercase;
@@ -1933,7 +1941,7 @@ body {
     background: white;
     border-radius: 16px;
     padding: 40px 30px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
@@ -1975,8 +1983,8 @@ body {
     width: 80px;
     height: 80px;
     background: linear-gradient(135deg,
-            rgba(204, 51, 102, 0.1),
-            rgba(204, 51, 102, 0.05));
+            rgba(250, 156, 29, 0.1),
+            rgba(250, 156, 29, 0.05));
     border-radius: 16px;
     display: flex;
     align-items: center;

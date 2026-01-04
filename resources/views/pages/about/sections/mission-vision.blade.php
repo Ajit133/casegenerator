@@ -22,10 +22,10 @@
     <!-- Decorative curves right -->
     <div class="curves-decoration">
         <svg viewBox="0 0 300 400" preserveAspectRatio="none">
-            <path d="M 0 100 Q 100 150 150 200 T 300 300" stroke="#B82E5C" stroke-width="3" fill="none" opacity="0.3"/>
-            <circle cx="260" cy="280" r="40" fill="#B82E5C" opacity="0.2"/>
-            <circle cx="280" cy="310" r="25" fill="#B82E5C" opacity="0.15"/>
-            <circle cx="240" cy="330" r="15" fill="#B82E5C" opacity="0.1"/>
+            <path d="M 0 100 Q 100 150 150 200 T 300 300" stroke="var(--primary-color)" stroke-width="3" fill="none" opacity="0.3"/>
+            <circle cx="260" cy="280" r="40" fill="var(--primary-color)" opacity="0.2"/>
+            <circle cx="280" cy="310" r="25" fill="var(--primary-color)" opacity="0.15"/>
+            <circle cx="240" cy="330" r="15" fill="var(--primary-color)" opacity="0.1"/>
         </svg>
     </div>
 
@@ -102,7 +102,7 @@
 .dots-decoration span {
     width: 12px;
     height: 12px;
-    background: #B82E5C;
+    background:var(--primary-color);
     border-radius: 50%;
     opacity: 0.6;
 }
@@ -175,7 +175,6 @@
     border-radius: 50%;
     object-fit: cover;
     border: 8px solid white;
-    box-shadow: 0 20px 60px rgba(184, 46, 92, 0.2);
     display: block;
 }
 
@@ -185,7 +184,7 @@
     left: -10px;
     right: -10px;
     bottom: -10px;
-    border: 3px solid rgba(184, 46, 92, 0.3);
+    border: 3px solid rgba(249, 156, 27, 0.3);
     border-radius: 50%;
     pointer-events: none;
 }
@@ -207,7 +206,7 @@
 .ceo-title-role {
     font-size: 1.1rem;
     font-weight: 700;
-    color: #B82E5C;
+    color: var(--primary-color);
     margin: 0 0 30px 0;
     text-transform: uppercase;
     letter-spacing: 1.5px;

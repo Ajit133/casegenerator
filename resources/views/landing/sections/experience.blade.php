@@ -282,13 +282,13 @@
 
 .section-subtitle {
     display: inline-block;
-    color: var(--primary-color);
+    color:black;
     font-size: 16px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 15px;
-    background: rgba(204, 51, 102, 0.08);
+    background: var(--primary-color);
     padding: 6px 12px;
     border-radius: 30px;
     text-align: left;

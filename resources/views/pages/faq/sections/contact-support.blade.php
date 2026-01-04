@@ -10,16 +10,13 @@
                 </div>
             </div>
             <div class="support-content">
-                <h2 class="support-title">Still Have Questions?</h2>
-                <p class="support-text">Can't find the answer you're looking for? Our dedicated team is here to provide personalized assistance for all your power generation needs.</p>
+                <h2 class="support-title">Dedicated Customer Teams & An Agile Services</h2>
+                <p class="support-text">Our worldwide presence ensures the timeliness, cost efficiency and compliance adherence required to ensure your production timelines are met.</p>
             </div>
-            <div class="support-action">
-                <a href="{{ route('contact') }}" class="btn-support-cta">
-                    <span>Reach Out to Us</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
+            <div class="section-action">
+                <a href="{{ asset('images/Product_Services/Company-Brochure.pdf') }}" download class="btn btn-primary btn-large">
+                    Download Brochure
+                    <i class="fa-solid fa-download"></i>
                 </a>
             </div>
         </div>

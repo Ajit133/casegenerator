@@ -336,7 +336,7 @@
 /* Showcase Grid Styles */
 .products-showcase {
     padding: 6rem 0;
-    background-color: #f3f4f6;
+    background-color: #ffffff;
 }
 
 .premium-grid {

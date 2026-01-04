@@ -57,6 +57,27 @@
              isolation: isolate; 
         }
 
+        /* Title Overlay on Hover */
+        .gps-image-wrapper .gps-desc {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(100%);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 -10px 40px rgba(249, 156, 27, 0.4);
+            z-index: 10;
+        }
+
+        .gps-card:hover .gps-image-wrapper .gps-desc {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
         .gps-image {
             width: 100%;
             height: 100%;
@@ -169,13 +190,13 @@
 
         .gps-subtitle {
             display: inline-block;
-            color: var(--primary-color);
+            color: black;
             font-size: 16px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 15px;
-            background: rgba(204, 51, 102, 0.08);
+            background: var(--primary-color);
             padding: 6px 12px;
             border-radius: 30px;
             text-align: left;
@@ -219,7 +240,6 @@
             text-decoration: none;
             transition: all 0.3s ease;
             gap: 16px;
-            box-shadow: 0 4px 15px rgba(249, 156, 27, 0.3); /* Soft colored shadow */
         }
 
         .gps-btn:hover {
@@ -258,6 +278,49 @@
         </div>
 
         <div class="gps-grid">
+            @forelse($featuredProjects as $project)
+            <!-- Dynamic Project Card -->
+            <div class="gps-card">
+                <div class="gps-image-wrapper">
+                    <img src="{{ $project->featured_image ? Storage::url($project->featured_image) : asset('images/placeholder.jpg') }}" 
+                         alt="{{ $project->image_alt_text ?? $project->title }}" 
+                         class="gps-image">
+                    
+                    <!-- Badge -->
+                    <div class="gps-badge">
+                        <!-- Corner Blend SVG -->
+                        <div class="gps-badge-blend-left">
+                            <svg class="svgcorner" id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.91 18.38"> <g id="Capa_1-2" data-name="Capa 1"> <path class="cls-1" d="m18.91,18.38V0H0c10.27,0,18.61,8.18,18.91,18.38Z"></path> </g> </svg>
+                        </div>
+                        <div class="gps-badge-blend-right">
+                            <svg class="svgcorner svgcorner--2" id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.91 18.38"> <g id="Capa_1-2" data-name="Capa 1"> <path class="cls-1" d="m18.91,18.38V0H0c10.27,0,18.61,8.18,18.91,18.38Z"></path> </g> </svg>
+                        </div>
+
+                       
+                        <div class="gps-badge-category">
+                            <!-- Custom Icon for Projects -->
+                            <svg class="gps-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M4 10h12M4 14h12M4 18h12M4 6h12" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M20 6v12" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            PROJECT
+                        </div>
+                        @if($project->location)
+                         <span class="gps-badge-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            {{ $project->location }}
+                        </span>
+                        @endif
+                    </div>
+                    <p class="gps-desc">
+                       {{ $project->title }}
+                    </p>
+                </div>
+            </div>
+            @empty
+            <!-- Fallback Cards if no projects -->
             <!-- Card 1: Infrastructures -->
             <div class="gps-card">
                 <div class="gps-image-wrapper">
@@ -289,10 +352,10 @@
                             Hotel, Dubai
                         </span>
                     </div>
+                    <p class="gps-desc">
+                       Crown Plaza Project
+                    </p>
                 </div>
-                <p class="gps-desc">
-                   Crown Plaza Project
-                </p>
             </div>
 
             <!-- Card 2: Logistics -->
@@ -328,10 +391,10 @@
                             Al Meydan Rd, Dubai
                         </span>
                     </div>
+                    <p class="gps-desc">
+                        Meydan Residence Project
+                    </p>
                 </div>
-                <p class="gps-desc">
-                    Meydan Residence Project
-                </p>
             </div>
 
             <!-- Card 3: Industry -->
@@ -366,10 +429,12 @@
                            Mall, Dubai
                         </span>
                     </div>
+                    <p class="gps-desc">
+                       Al Futtiam Shopping Mall
+                    </p>
                 </div>
-                <p class="gps-desc">
-                   Al Futtiam Shopping Mall
             </div>
+            @endforelse
         </div>
 
         <!-- See All Button -->

@@ -121,7 +121,7 @@
 /* Blog Cases Section Styles */
 .blog-cases-section {
     padding: 100px 0;
-    background: #f5f5f5;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     position: relative;
 }
 
@@ -229,8 +229,8 @@
 /* Blog Category */
 .blog-category {
     display: inline-block;
-    background: #e8f0f7;
-    color: #0066cc;
+    background: var(--primary-color);
+    color: #000000;
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 12px;

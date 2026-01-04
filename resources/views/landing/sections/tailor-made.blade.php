@@ -67,11 +67,7 @@
             max-width: 90%;
         }
 
-        .tm-highlight {
-            color: #fbbf24; /* Amber-400 equivalent for visibility */
-            font-weight: 700;
-        }
-
+        
         /* Button */
         .tm-btn {
             display: inline-flex;
@@ -96,7 +92,7 @@
 
         .tm-btn-icon-circle {
             background-color: #ffffff;
-            color: #CC3366;
+            color: var(--primary-color);
             width: 32px;
             height: 32px;
             border-radius: 50%;
@@ -192,7 +188,7 @@
                 manufacture the ideal generator set for your project.<br>
                 And after that, <span class="tm-highlight">we stay by your side to make sure everything runs smoothly.</span>
             </p>
-            <a href="#contact" class="tm-btn">
+            <a href="/contact" class="tm-btn">
                 I want to know more
                 <span class="tm-btn-icon-circle">
                     <!-- Simple arrow right icon -->
@@ -206,7 +202,7 @@
     </div>
     
     <div class="tm-right">
-        <img src="{{ asset('images/landing/Casablanca_Vission-1-1.png') }}" alt="Casablanca Night View">
+        <img src="{{ asset('images/Product_Services/Casablanca.png') }}" alt="Casablanca Night View">
     </div>
     
     </div>
